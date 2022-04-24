@@ -14,8 +14,9 @@ const initialValues = {
   number: '',
 };
 
-export class NameField extends React.Component {
-  handleSubmit = (values, { resetForm }) => {
+export function NameField({onSubmit})  {
+
+const handleSubmit = (values, { resetForm }) => {
     const { name, number } = values;
     const newContact = {
       name,
@@ -23,30 +24,66 @@ export class NameField extends React.Component {
       id: nanoid(),
     };
     resetForm();
-    this.props.onSubmit(newContact);
+    onSubmit(newContact);
   };
 
-  nameInputId = nanoid();
-  numberInputId = nanoid();
-  render() {
-    return (
+  const nameInputId = nanoid();
+  const numberInputId = nanoid();
+
+  return (
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={this.handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Form autoComplete="off">
-          <FieldName htmlFor={this.nameInputId}>Name</FieldName>
-          <ContactField type="text" name="name" id={this.nameInputId} />
+          <FieldName htmlFor={nameInputId}>Name</FieldName>
+          <ContactField type="text" name="name" id={nameInputId} />
           <ErrorMessage name="name" component="div" />
 
-          <FieldName htmlFor={this.numberInputId}>Number</FieldName>
-          <ContactField type="tel" name="number" id={this.numberInputId} />
+          <FieldName htmlFor={numberInputId}>Number</FieldName>
+          <ContactField type="tel" name="number" id={numberInputId} />
           <ErrorMessage name="number" component="div" />
 
           <AddContactButton type="submit"> Add contact </AddContactButton>
         </Form>
       </Formik>
     );
-  }
 }
+  
+// class OldNameField extends React.Component {
+//   handleSubmit = (values, { resetForm }) => {
+//     const { name, number } = values;
+//     const newContact = {
+//       name,
+//       number,
+//       id: nanoid(),
+//     };
+//     resetForm();
+//     this.props.onSubmit(newContact);
+//   };
+
+//   nameInputId = nanoid();
+//   numberInputId = nanoid();
+//   render() {
+//     return (
+//       <Formik
+//         initialValues={initialValues}
+//         validationSchema={schema}
+//         onSubmit={this.handleSubmit}
+//       >
+//         <Form autoComplete="off">
+//           <FieldName htmlFor={this.nameInputId}>Name</FieldName>
+//           <ContactField type="text" name="name" id={this.nameInputId} />
+//           <ErrorMessage name="name" component="div" />
+
+//           <FieldName htmlFor={this.numberInputId}>Number</FieldName>
+//           <ContactField type="tel" name="number" id={this.numberInputId} />
+//           <ErrorMessage name="number" component="div" />
+
+//           <AddContactButton type="submit"> Add contact </AddContactButton>
+//         </Form>
+//       </Formik>
+//     );
+//   }
+// }

@@ -26,7 +26,6 @@ export function PhoneBook() {
   }, []);
 
   useEffect(() => {
-    console.log("Effect2");
     window.localStorage.setItem(LS_KEY, JSON.stringify(contacts));
   }, [contacts]);
   
