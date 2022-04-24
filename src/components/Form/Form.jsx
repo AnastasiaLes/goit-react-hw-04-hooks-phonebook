@@ -51,39 +51,3 @@ const handleSubmit = (values, { resetForm }) => {
     );
 }
   
-// class OldNameField extends React.Component {
-//   handleSubmit = (values, { resetForm }) => {
-//     const { name, number } = values;
-//     const newContact = {
-//       name,
-//       number,
-//       id: nanoid(),
-//     };
-//     resetForm();
-//     this.props.onSubmit(newContact);
-//   };
-
-//   nameInputId = nanoid();
-//   numberInputId = nanoid();
-//   render() {
-//     return (
-//       <Formik
-//         initialValues={initialValues}
-//         validationSchema={schema}
-//         onSubmit={this.handleSubmit}
-//       >
-//         <Form autoComplete="off">
-//           <FieldName htmlFor={this.nameInputId}>Name</FieldName>
-//           <ContactField type="text" name="name" id={this.nameInputId} />
-//           <ErrorMessage name="name" component="div" />
-
-//           <FieldName htmlFor={this.numberInputId}>Number</FieldName>
-//           <ContactField type="tel" name="number" id={this.numberInputId} />
-//           <ErrorMessage name="number" component="div" />
-
-//           <AddContactButton type="submit"> Add contact </AddContactButton>
-//         </Form>
-//       </Formik>
-//     );
-//   }
-// }
