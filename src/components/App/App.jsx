@@ -12,10 +12,10 @@ const contactList = [
   ]
 
 export function PhoneBook() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem(LS_KEY))
-      ?? contactList,
-  );
+  const [contacts, setContacts] = useState(() => {
+    return JSON.parse(window.localStorage.getItem(LS_KEY))
+      ?? contactList;
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
